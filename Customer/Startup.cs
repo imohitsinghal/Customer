@@ -24,16 +24,18 @@ namespace Customer
             services.AddDbContext<AdventureWorks2019DbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("AdventureWorks")));
             services.AddScoped<ICustomerProvider, CustomerProvider>();
             services.AddControllers();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            
+            
+            //if (env.IsDevelopment())
+            //{
+            app.UseDeveloperExceptionPage();
+            //}
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -43,6 +45,12 @@ namespace Customer
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Adventure Works API");
+                //c.RoutePrefix = string.Empty;
             });
         }
     }

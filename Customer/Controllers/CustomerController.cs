@@ -1,4 +1,5 @@
-﻿using Customer.Providers;
+﻿using Customer.Models;
+using Customer.Providers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -28,7 +29,7 @@ namespace Customer.Controllers
         }
 
         [HttpGet("{minSumOrder}/{minDate}/{maxDate}")]
-        public async Task<IEnumerable<API.Data.Repository.Models.Customer>> GetSalesCustomerQuery(decimal minSumOrder, DateTime minDate, DateTime maxDate)
+        public async Task<IEnumerable<CustomerWithOrder>> GetSalesCustomerQuery(decimal minSumOrder, DateTime minDate, DateTime maxDate)
         {
             return await _customerProvider.GetSalesCustomerQuery(minSumOrder, minDate, maxDate);
         }

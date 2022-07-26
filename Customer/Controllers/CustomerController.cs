@@ -29,9 +29,9 @@ namespace Customer.Controllers
         }
 
         [HttpGet("{minSumOrder}/{minDate}/{maxDate}")]
-        public async Task<IEnumerable<CustomerWithOrder>> GetSalesCustomerQuery(decimal minSumOrder, DateTime minDate, DateTime maxDate)
+        public IEnumerable<CustomerWithOrder> GetSalesCustomerQuery(decimal minSumOrder, DateTime minDate, DateTime maxDate)
         {
-            return await _customerProvider.GetSalesCustomerQuery(minSumOrder, minDate, maxDate);
+            return  _customerProvider.GetSalesCustomerQuery(minSumOrder, minDate, maxDate);
         }
     }
 }

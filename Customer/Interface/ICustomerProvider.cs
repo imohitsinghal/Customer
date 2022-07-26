@@ -8,6 +8,6 @@ namespace Customer.Providers
 {
     public interface ICustomerProvider
     {
-        Task<List<CustomerWithOrder>> GetSalesCustomerQuery(decimal minSumOrder, DateTime minDate, DateTime maxDate);
+        List<CustomerWithOrder> GetSalesCustomerQuery(decimal minSumOrder, DateTime minDate, DateTime maxDate);
     }
 }
